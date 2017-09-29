@@ -1,6 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+__author__ 'jnuyanfa'
+
+'''
+async web application.
+'''
+
 import logging; logging.basicConfig(level=logging.INFO, \
 format='%(asctime)s - %(filename)s[line:%(lineno)d] - %(levelname)s: %(message)s')
 import asyncio, os, json, time
