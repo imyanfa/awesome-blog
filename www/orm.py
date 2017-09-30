@@ -94,6 +94,10 @@ class FloatField(Field):
     def __init__(self, name=None, primary_key=False, default=0.0):
         super().__init__(name, 'REAL', primary_key, False, default)
 
+class TextField(Field):
+    def __init__(self, name=None, default=0.0):
+        super().__init__(name, 'TEXT', False, False, default)
+
 class TimestampField(Field):
     def __init__(self, name=None, primary_key=False, auto_update = False, default = datetime.now()):
         super().__init__(name, 'TIMESTAMP', primary_key, auto_update, default.strftime('%Y-%m-%d %H:%M:%S'))
@@ -220,7 +224,7 @@ class Model(dict, metaclass=ModelMetaclass):
             set_list.append('`%s` = ?' %x)
         sql.append(', '.join(set_list))
         if where:
-            sql.append('where')
+            sql.append('WHERE')
             sql.append(where)
         if args is not None and len(args) > 0:
             final_args.extend(args)
@@ -231,9 +235,9 @@ class Model(dict, metaclass=ModelMetaclass):
         conditions = [x for x in self.__fields__ if self.getValue(x) is not None]
         sql = [self.__delete__]
         if args and len(args) > 0:
-            sql.append('where 1 = 1')
+            sql.append('WHERE 1 = 1')
             for x in conditions:
-                sql.append(' and `%s` = ?' %x)
+                sql.append(' AND `%s` = ?' %x)
         return await execute(' '.join(sql), args)
 
 if __name__ == '__main__':
