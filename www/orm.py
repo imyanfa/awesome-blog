@@ -90,7 +90,7 @@ class IntegerField(Field):
     def __init__(self, name=None, primary_key=False, auto_update = False, default=0):
         super().__init__(name, 'INTEGER', primary_key, auto_update, default)
 
-class LongFiled(Field):
+class LongField(Field):
     def __init__(self, name=None, primary_key=False, auto_update = False, default=0):
         super().__init__(name, 'BIGINT', primary_key, auto_update, default)
 
@@ -99,7 +99,7 @@ class FloatField(Field):
         super().__init__(name, 'REAL', primary_key, False, default)
 
 class TextField(Field):
-    def __init__(self, name=None, default=0.0):
+    def __init__(self, name=None, default=None):
         super().__init__(name, 'TEXT', False, False, default)
 
 class TimestampField(Field):
