@@ -82,6 +82,10 @@ class StringField(Field):
     def __init__(self, name=None, primary_key=False, default=None, ddl='VARCHAR(127)'):
         super().__init__(name, ddl, primary_key, False, default)
 
+class BooleanField(Field):
+    def __init__(self, name=None, default=False):
+        super().__init__(name, 'BOOLEAN', False, False, default)
+
 class IntegerField(Field):
     def __init__(self, name=None, primary_key=False, auto_update = False, default=0):
         super().__init__(name, 'INTEGER', primary_key, auto_update, default)
